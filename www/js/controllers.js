@@ -12,24 +12,4 @@ angular.module('starter.controllers', [])
 })
 
 .controller('AccountCtrl', function($scope) {
-})
-
-.controller('PhotoCtrl', function($scope, PhotoFactory) {
-
-  $scope.getPhoto = function() {
-    console.log('Getting camera');
-    PhotoFactory.getPicture().then(function(imageURI) {
-        $log.log(imageURI);
-        $scope.lastPhoto = imageURI;
-    }, function(err) {
-      console.err(err);
-    },  
-    {  //options
-        quality: 75,
-        targetWidth: 320,
-        targetHeight: 320,
-        saveToPhotoAlbum: false
-    });
-  };
- 
 });

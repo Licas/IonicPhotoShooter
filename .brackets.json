@@ -1,5 +1,6 @@
 {
     "jscodehints.detectedExclusions": [
-        "/Users/licas/Documents/code/IonicPhotoShooter/platforms/ios/build/emulator/PhotoShooter.app/www/lib/ionic/js/angular-ui/angular-ui-router.min.js"
+        "/Users/licas/Documents/code/IonicPhotoShooter/platforms/ios/build/emulator/PhotoShooter.app/www/lib/ionic/js/angular-ui/angular-ui-router.min.js",
+        "/Users/licas/Documents/code/IonicPhotoShooter/www/js/controllers.js"
     ]
 }
