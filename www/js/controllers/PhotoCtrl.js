@@ -7,17 +7,20 @@
             console.log('Getting camera');
      
             PhotoFactory.getPicture().then(function(imageURI) {
-                console.log(imageURI);
-
-                var image = document.getElementById('myImage');
-                image.src = "data:image/jpeg;base64," + imageURI;
-
                 $scope.lastPhoto = imageURI;
+                            
+               // var image = document.getElementById('myImage');
+            //    image.src = "data:image/jpeg;base64," + imageURI;
                 }, function(err) {
                   console.err(err);
                 })
         };
         
+        $scope.clearPhoto = function() {
+            $scope.lastPhoto = null;
+        };
+        
+        $scope.sendPhoto = function() {};        
         
     };
     
