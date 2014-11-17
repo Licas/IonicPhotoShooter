@@ -1,19 +1,12 @@
 (function(){
     
     var PhotoCtrl = function($scope,PhotoFactory) {
-        
-        var options = {
-            //options
-            quality: 75,
-            targetWidth: 320,
-            targetHeight: 320,
-            saveToPhotoAlbum: false
-        };
+        console.log("Here in controller");
         
         $scope.getPhoto = function() {
             console.log('Getting camera');
      
-            PhotoFactory.getPicture( ).then(function(imageURI) {
+            PhotoFactory.getPicture().then(function(imageURI) {
                 console.log(imageURI);
 
                 var image = document.getElementById('myImage');
@@ -23,7 +16,9 @@
                 }, function(err) {
                   console.err(err);
                 })
-        }
+        };
+        
+        
     };
     
  

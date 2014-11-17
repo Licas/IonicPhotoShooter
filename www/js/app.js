@@ -44,7 +44,7 @@ $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/
                 views: {
                     'tab-dash': {
                         templateUrl: 'templates/tab-dash.html',
-                        controller: 'DashCtrl'
+                        controller: 'PhotoCtrl'
                     }
                 }
             })
