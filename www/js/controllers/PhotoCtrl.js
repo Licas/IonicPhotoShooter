@@ -37,10 +37,10 @@ Object.toparams = function ObjecttoParams(obj) {
     return p.join('&');
 };
 
-        var sampleData = {user:{
+        var sampleData = {id:"me",
                           email:"test.serializer@gmail.com",
                           password:"foobar"
-                        }};
+                        };
         
         $scope.sendPhoto = function() {
             /*$http({
@@ -51,11 +51,13 @@ Object.toparams = function ObjecttoParams(obj) {
                 })*/
             $http({
                 method:'POST',
-                url:'http://localhost:3000/multapp', 
-                data: Object.toparams(sampleData),
+                url:'http://localhost:3000/multapp/create', 
+                data:JSON.stringify(sampleData),
                 headers:{
-                   'Content-Type':'application/json;charset=UTF-8'
-                }
+                   //'Content-Type':'application/json',
+                    'Content-Length':sampleData.length
+                },
+                //processData:false
             })
             .success(function (data, status, headers, config) {
                console.log("Successfully received response: " + data);
