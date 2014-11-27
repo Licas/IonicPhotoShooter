@@ -4,6 +4,7 @@
         "/Users/licas/Documents/code/IonicPhotoShooter/www/js/controllers.js",
         "/Users/licas/Documents/code/IonicPhotoShooter/platforms/ios/www/plugins/com.ionic.keyboard/www/keyboard.js",
         "/Users/licas/Documents/code/IonicPhotoShooter/www/js/factories/PhotoFactory.js",
-        "/Users/manuelmorini/Documents/code/IonicPhotoShooter/platforms/ios/build/emulator/PhotoShooter.app/www/plugins/org.apache.cordova.camera/www/ios/CameraPopoverHandle.js"
+        "/Users/manuelmorini/Documents/code/IonicPhotoShooter/platforms/ios/build/emulator/PhotoShooter.app/www/plugins/org.apache.cordova.camera/www/ios/CameraPopoverHandle.js",
+        "/Users/licas/Documents/code/IonicPhotoShooter/platforms/ios/build/emulator/PhotoShooter.app/www/plugins/org.apache.cordova.inappbrowser/www/inappbrowser.js"
     ]
 }
