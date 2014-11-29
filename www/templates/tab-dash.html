@@ -1,19 +1,24 @@
 <ion-view title="Dashboard">
   <ion-content class="padding">
-    <h1>Take a photo!</h1>
+      <h2>Segnalazione</h2>
+    <p>Scatta una foto dell'infrazione ed inviala!</p>
    
-    <button ng-click="getPhoto()" class="button button-block button-primary">Take Photo</button>
+    <button ng-click="getPhoto()" class="button button-block button-primary">SCATTA</button>
 
       <img ng-src="{{lastPhoto}}" style="max-width: 100%" />
       
       <div class="row">
        <div class="col-sm-6">
-           <button ng-click="clearPhoto()" class="button button-block button-primary">Cancel</button>
+           <button ng-click="clearPhoto()" class="button button-block button-primary">CANCELLA</button>
         </div>
           <div class="clearfix"></div>
         <div class="col-sm-6">
-            <button ng-click="sendPhoto()" class="button button-block button-primary">Send</button>
+            <button ng-click="sendPhoto()" class="button button-block button-primary">INVIA</button>
           </div>
+      </div>
+      <div class="row">
+        <div ng-show="info">{{message}}</div>
+          <div ng-show="error">{{message}}</div>
       </div>
   </ion-content>
 </ion-view>
