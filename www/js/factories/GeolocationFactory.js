@@ -7,8 +7,7 @@
         geolocation.getPosition = function() {
 
             // onSuccess Callback
-            // This method accepts a Position object, which contains the
-            // current GPS coordinates
+            // This method accepts a Position object, which contains the current GPS coordinates
             var onSuccess = function(position) {
 
             $log.info("Lon:"+position.coords.longitude+",Lat:"+position.coords.latitude);
@@ -71,9 +70,16 @@
             function onError(error) {
                 alert('code: '    + error.code    + '\n' +
                       'message: ' + error.message + '\n');
-            };
+            }
 
-            navigator.geolocation.getCurrentPosition(onSuccess, onError);
+            var geolocationOpts = {
+              enableHighAccuracy: true,//Provides a hint that the application needs the best possible results. By default, the device attempts to retrieve a `Position` using network-based methods. Setting this property to `true` tells the framework to use more accurate methods, such as satellite positioning. _(Boolean)_
+            // timeout: The maximum length of time (milliseconds) that is allowed to pass from the call to `navigator.geolocation.getCurrentPosition` or `geolocation.watchPosition` until the corresponding `geolocationSuccess` callback executes. If the `geolocationSuccess` callback is not invoked within this time, the `geolocationError` callback is passed a `PositionError.TIMEOUT` error code. (Note that when used in conjunction with `geolocation.watchPosition`, the `geolocationError` callback could be called on an interval every `timeout` milliseconds!) _(Number)_
+
+                maximumAge:1000//Accept a cached position whose age is no greater than the specified time in milliseconds. _(Number)_
+            }
+            
+            navigator.geolocation.getCurrentPosition(onSuccess, onError, geolocationOpts);
         }
 
         return geolocation;
