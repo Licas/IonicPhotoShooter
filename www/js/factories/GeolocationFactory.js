@@ -10,20 +10,35 @@
             // This method accepts a Position object, which contains the
             // current GPS coordinates
             var onSuccess = function(position) {
-              /*  alert('Latitude: '          + position.coords.latitude          + '\n' +
-                      'Longitude: '         + position.coords.longitude         + '\n' +
-                      'Altitude: '          + position.coords.altitude          + '\n' +
-                      'Accuracy: '          + position.coords.accuracy          + '\n' +
-                      'Altitude Accuracy: ' + position.coords.altitudeAccuracy  + '\n' +
-                      'Heading: '           + position.coords.heading           + '\n' +
-                      'Speed: '             + position.coords.speed             + '\n' +
-                      'Timestamp: '         + position.timestamp                + '\n');
-            */
+
             $log.info("Lon:"+position.coords.longitude+",Lat:"+position.coords.latitude);
             //Converti in strada http://nominatim.openstreetmap.org/reverse?format=json&lat="+position.coords.latitude+"&lon=-83.952"+position.coords.longitude
-                /* esempio di output:
-                {"place_id":"134561514","licence":"Data \u00a9 OpenStreetMap contributors, ODbL 1.0. http:\/\/www.openstreetmap.org\/copyright","osm_type":"way","osm_id":"225398888","lat":"35.9582749","lon":"-83.9520962","display_name":"North Concord Street, Knoxville, Knox County, Tennessee, 37919, Stati Uniti d'America","address":{"road":"North Concord Street","city":"Knoxville","county":"Knox County","state":"Tennessee","postcode":"37919","country":"Stati Uniti d'America","country_code":"us"}}*/
+
+                //ESEMPIO CON GOOGLE API
+                $http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+position.coords.latitude+','+position.coords.longitude).
+                  success(function(data, status, headers, config) {
+                    var addrGmap = JSON.stringify(data.results[0]);
+
+                    $http.get('http://nominatim.openstreetmap.org/reverse?format=json&lat='+position.coords.latitude+'&lon='+position.coords.longitude).
+                  success(function(data2, status, headers, config) {
+                    var addr = JSON.stringify(data2);
+
+
+                     $log.info("La tua posizione:" +
+                         "GmapAPi:"+JSON.parse(addrGmap).formatted_address);
+
+                    alert("La tua posizione:\n" +
+                            "GmapApi:"+ JSON.parse(addrGmap).formatted_address +"\n" +
+                              "OpenStreetMap:"+JSON.parse(addr).display_name);
+                          });
+
+                  }).
+                  error(function(data, status, headers, config) {
+                    alert("impossibile determinare la posizione: "+data);
+                  });
                 
+                /*
+                ESEMPIO CON OPENSTREETMAP
                 var req = {
                     method: 'GET',
                     url: 'http://nominatim.openstreetmap.org/reverse?format=json&lat='+position.coords.latitude+'&lon='+position.coords.longitude,
@@ -48,7 +63,7 @@
                   }).
                   error(function(data, status, headers, config) {
                     alert("impossibile determinare la posizione: "+data);
-                  });
+                  });*/
                 
             };
 
